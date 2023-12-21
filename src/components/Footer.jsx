@@ -31,7 +31,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="lowerSection py-2 text-center text-md border-t-2 border-gray-500">
-                    <div className="">Copyright © 2023 eShop.com. &nbsp; All rights reserved.</div>
+                    <div className="">Copyright © 2023 bookcave.com. &nbsp; All rights reserved.</div>
                 </div>
             </div>
         </div>
