@@ -1,5 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
+
 
 export default function ContactUs() {
     return (
@@ -39,6 +41,8 @@ export default function ContactUs() {
 
                 <img className='w-[30rem] align-middle' src="https://westward360.com/wp-content/uploads/2021/01/Hero-Contact-Image.svg" alt="contact us" />
             </div>
+
+            <Footer />
         </div>
     )
 }

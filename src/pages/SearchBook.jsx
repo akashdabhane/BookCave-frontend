@@ -3,6 +3,7 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import Navbar from '../components/Navbar';
 import BooksList from '../components/BooksList';
 import axios from 'axios';
+import Footer from '../components/Footer';
 
 export default function SearchBook() {
     const [books, setBooks] = useState([]);
@@ -69,6 +70,8 @@ export default function SearchBook() {
             </main>
 
             <BooksList books={books} />
+
+            <Footer />
         </div>
     )
 }

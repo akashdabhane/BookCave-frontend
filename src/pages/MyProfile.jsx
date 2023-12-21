@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export default function MyProfile() {
     const [showPassword, setShowPassword] = useState(false);
@@ -138,6 +139,8 @@ export default function MyProfile() {
                 }
                 <button className='bg-blue-800 w-full text-white px-4 p-3 rounded text-center'>Save</button>
             </div> */}
+
+            <Footer />
         </div>
     )
 }

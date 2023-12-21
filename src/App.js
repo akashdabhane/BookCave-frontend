@@ -13,13 +13,14 @@ import { LoginContext } from '../src/contexts/LoginContext'
 import ContactUs from "./pages/ContactUs";
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false);
   const [phoneGlobal, setPhoneGlobal] = useState('');
   const [userIdGlobal, setUserIdGlobal] = useState('');
   const [publisherGlobal, setPublisherGlobal] = useState(false);
 
 
   return (
-    <div className="App bg-black">
+    <div className="App ">
       <BrowserRouter>
         <LoginContext.Provider value={{ setPhoneGlobal, setUserIdGlobal, setPublisherGlobal, publisherGlobal }}>
           <Routes>

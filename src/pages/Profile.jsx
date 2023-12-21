@@ -8,6 +8,7 @@ import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../contexts/LoginContext';
 import { CiSquarePlus } from "react-icons/ci";
+import Footer from '../components/Footer';
 
 
 
@@ -85,6 +86,8 @@ export default function Profile() {
                     ))
                 }
             </div>
+
+            <Footer />
         </div>
     )
 }

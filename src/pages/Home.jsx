@@ -6,6 +6,7 @@ import axios from 'axios'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import Footer from '../components/Footer';
 
 
 export default function Home() {
@@ -14,7 +15,7 @@ export default function Home() {
 
     const SlideBarImg = [
         "https://images.pexels.com/photos/159778/books-reading-series-narnia-159778.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://allauthor.com/images/mar/img/klshandwick.jpg?vv=1522934823", 
+        "https://allauthor.com/images/mar/img/klshandwick.jpg?vv=1522934823",
         "https://blog.bookbaby.com/wp-content/uploads/2015/11/What-Makes-A-Book-Banner.jpg",
     ]
 
@@ -62,6 +63,7 @@ export default function Home() {
 
             <BooksList books={books} />
 
+            <Footer />
         </div>
     )
 }

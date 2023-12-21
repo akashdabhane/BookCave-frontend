@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import logo from '../images/logo.png'
 
 export default function AboutApp() {
@@ -17,6 +18,7 @@ export default function AboutApp() {
 
                 <h3 className='text-lg font-semibold leading-8'>This app will give opportunity to them to make liing for small shop owner <br /> Also will give booknerds the books they want at home</h3>
             </div>
+            <Footer />
         </div>
     )
 }
