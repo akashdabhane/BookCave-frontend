@@ -11,6 +11,7 @@ import OrderHistory from "./pages/OrderHistory";
 import { useState } from "react";
 import { LoginContext } from '../src/contexts/LoginContext'
 import ContactUs from "./pages/ContactUs";
+import ForgetPassword from "./pages/ForgetPassword";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -32,6 +33,7 @@ function App() {
             <Route path="/search" element={<SearchBook />} />
             <Route path="/order-history" element={<OrderHistory />} />
             <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/forget-password" element={<ForgetPassword />} />
 
             <Route path="/profile" element={<Profile />} />
             <Route path="/my-profile" element={<MyProfile />} />

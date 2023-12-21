@@ -65,7 +65,7 @@ export default function Login() {
                             <input type="checkbox" name="staySign" id="staySigned" />
                             <label htmlFor="staySigned">Stay Signed In</label>
                         </div>
-                        <span>Forget Password?</span>
+                        <span className='text-blue-600 cursor-pointer' onClick={() => navigate('/forget-password')}>Forget Password?</span>
                     </div>
 
                     <button className='bg-black w-full text-white p-4 font-semibold my-12' onClick={handleOnClick} >

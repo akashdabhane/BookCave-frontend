@@ -5,7 +5,7 @@ import logo from '../images/logo.png'
 
 export default function AboutApp() {
     return (
-        <div className='md:mx-[20%] bg-white h-[100vh]'>
+        <div className='md:mx-[20%] flex flex-col justify-between bg-white h-[100vh]'>
             <Navbar />
             <div className="mx-4 md:mx-24 my-8 space-y-4 ">
                 <div className="flex align-middle space-x-6">

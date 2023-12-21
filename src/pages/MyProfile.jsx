@@ -64,7 +64,7 @@ export default function MyProfile() {
                         <button className={`${editPersonalInfo ? "hidden" : "text-blue-700 font-semibold"} text-blue-700 font-semibold `} onClick={() => setEditPersonalInfo(true)}>Edit</button>
                         <button className={`${editPersonalInfo ? "text-blue-700 font-semibold" : "hidden"}`} onClick={() => setEditPersonalInfo(false)}>Cancel</button>
                     </div>
-                    <div className="space-x-4">
+                    <div className="space-x-0 md:space-x-4 flex flex-col md:flex-row space-y-2">
                         <input type="text" name="firstname" id="firstname" className='rounded p-3 px-4 border border-blue-400' disabled={!editPersonalInfo} placeholder='enter your first name' />
                         <input type="text" name="lastname" id="lastname" className='rounded p-3 px-4 border border-blue-400' disabled={!editPersonalInfo} placeholder='enter your last name' />
                         <button className={`${editPersonalInfo ? "text-center px-6 p-3 rounded bg-blue-800 text-white" : "hidden"}`} onClick={() => setEditPersonalInfo(false)}>Save</button>
@@ -85,8 +85,8 @@ export default function MyProfile() {
                 </div>
 
                 {/* phone and password  */}
-                <div className="flex items-center space-x-6 ">
-                    <div className="">
+                <div className="flex flex-col md:flex-row items-center space-x-0 md:space-x-6 ">
+                    <div className="w-full md:w-auto">
                         <div className="flex space-x-4 items-center ">
                             <h2 className='font-bold text-xl'>Mobile number</h2>
                             <button className={`${editMobile ? "hidden" : "text-blue-700 font-semibold"}`} onClick={() => setEditMobile(true)}>Edit</button>
@@ -98,7 +98,7 @@ export default function MyProfile() {
                         </div>
                     </div>
 
-                    <div className="">
+                    <div className="w-full md:w-auto">
                         <div className="flex space-x-4 items-center ">
                             <h2 className='font-bold text-xl'>Password</h2>
                             <button className={`${editPassword ? "hidden" : "text-blue-700 font-semibold"}`} onClick={() => setEditPassword(true)}>Edit</button>

@@ -65,7 +65,7 @@ export default function Profile() {
                 <h2 className='font-semibold text-lg'>User name</h2>
             </div>
 
-            <div className="mx-4 h-screen">
+            <div className="mx-4 ">
                 {
                     profileList.map((item, index) => (
                         <div className="" key={index}>
