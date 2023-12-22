@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { LoginContext } from '../contexts/LoginContext';
@@ -12,8 +12,17 @@ export default function Login() {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const { setPhoneGlobal, setUserIdGlobal, setPublisherGlobal } = useContext(LoginContext);
+    const { setPhoneGlobal, setUserIdGlobal, setPublisherGlobal, setIsLogin, userIdGlobal, isLogin, phoneGlobal } = useContext(LoginContext);
 
+    useEffect(() => {
+        if (userIdGlobal !== null) {
+            setIsLogin(true)
+        }
+        else {
+            setIsLogin(false)
+        }
+
+    }, [])
 
     const handleOnClick = (event) => {
         event.preventDefault();
@@ -25,17 +34,24 @@ export default function Login() {
                     password: password,
                 })
                     .then(data => {
+                        console.log(data);
                         setPhone('');
                         setPassword('');
 
-                        setPhoneGlobal(data.response.data.phone);
-                        setUserIdGlobal(data.response.data._id);
-                        setPublisherGlobal(data.response.data.publisher)
+                        setPhoneGlobal(data.data.phone);
+                        setUserIdGlobal(data.data._id);
+                        setPublisherGlobal(data.data.publisher);
+
+                        localStorage.setItem('isLogin', 'true');
+
+                        console.log(localStorage.getItem('isLogin'))
                         // navigate to the home page
                         navigate('/')
+
                     })
                     .catch(error => {
-                        setError(error.response.data.message);
+                        console.log(error);
+                        // setError(error.response.data.message);
                     })
             } catch (error) {
                 console.log(error);

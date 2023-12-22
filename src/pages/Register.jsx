@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import bgCover from '../images/bgCover.png'
+
+
 
 export default function Register() {
     const [phone, setPhone] = useState('');
@@ -10,6 +12,8 @@ export default function Register() {
     const [isPublication, setIsPublication] = useState(false);
     const [publicationName, setPublicationName] = useState('');
     const [error, setError] = useState('');
+
+    const navigate = useNavigate();
 
 
     const handleOnClick = (event) => {
@@ -29,6 +33,8 @@ export default function Register() {
                         setPhone('');
                         setPassword('');
                         setRepeatPassword("");
+
+                        navigate('/login'); 
 
                     })
                     .catch(error => {
