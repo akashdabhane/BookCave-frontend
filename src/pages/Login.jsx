@@ -14,37 +14,30 @@ export default function Login() {
 
     const { setPhoneGlobal, setUserIdGlobal, setPublisherGlobal, setIsLogin, userIdGlobal, isLogin, phoneGlobal } = useContext(LoginContext);
 
-    useEffect(() => {
-        if (userIdGlobal !== null) {
-            setIsLogin(true)
-        }
-        else {
-            setIsLogin(false)
-        }
-
-    }, [])
-
-    const handleOnClick = (event) => {
+    const handleOnClick = async(event) => {
         event.preventDefault();
 
         if (phone.length === 10 && password.length >= 6 && password.length <= 16) {
             try {
-                axios.post('http://localhost:8000/api/login', {
+                await axios.post('http://localhost:8000/api/login', {
                     phone: phone,
                     password: password,
                 })
-                    .then(data => {
+                    .then((data) => {
                         console.log(data);
                         setPhone('');
                         setPassword('');
 
                         setPhoneGlobal(data.data.phone);
-                        setUserIdGlobal(data.data._id);
                         setPublisherGlobal(data.data.publisher);
+                        setUserIdGlobal(data.data._id);
+
+                        console.log(data.data._id); 
+                        console.log(userIdGlobal);
 
                         localStorage.setItem('isLogin', 'true');
+                        localStorage.setItem('userIdGlobal', data.data._id); 
 
-                        console.log(localStorage.getItem('isLogin'))
                         // navigate to the home page
                         navigate('/')
 
@@ -53,6 +46,8 @@ export default function Login() {
                         console.log(error);
                         // setError(error.response.data.message);
                     })
+
+                    console.log(userIdGlobal);
             } catch (error) {
                 console.log(error);
             }
