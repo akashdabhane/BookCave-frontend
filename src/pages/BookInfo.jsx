@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { FaRegStar } from "react-icons/fa";
+import { baseUrl } from '../utils/baseUrl'
 
 
 export default function BookInfo() {
@@ -14,7 +15,7 @@ export default function BookInfo() {
 
     useEffect(() => {
         try {
-            axios.get(`http://localhost:8000/api/book-info/${id}`)
+            axios.get(`${baseUrl}/api/book-info/${id}`)
                 .then(data => {
                     console.log(data);
                     setBook(data.data)

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import bgCover from '../images/bgCover.png'
+import { baseUrl } from '../utils/baseUrl';
 
 
 
@@ -22,7 +23,7 @@ export default function Register() {
         console.log(phone)
         if (phone.length === 10 && password.length >= 6 && password.length <= 16 && password === repeatPassword) {
             try {
-                axios.post('http://localhost:8000/api/register', {
+                axios.post(`${baseUrl}/api/register`, {
                     phone: phone,
                     password: password,
                     publisher: isPublication,
@@ -34,7 +35,7 @@ export default function Register() {
                         setPassword('');
                         setRepeatPassword("");
 
-                        navigate('/login'); 
+                        navigate('/login');
 
                     })
                     .catch(error => {

@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import axios from 'axios';
 import { LoginContext } from '../contexts/LoginContext';
 import { useParams } from 'react-router-dom';
+import { baseUrl } from '../utils/baseUrl';
 
 export default function MyProfile() {
     const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +23,7 @@ export default function MyProfile() {
 
     useEffect(() => {
         try {
-            axios.get(`http://localhost:8000/api/user/${userIdGlobal}`)
+            axios.get(`${baseUrl}/api/user/${userIdGlobal}`)
                 .then(data => {
                     console.log(data);
                     console.log(data.data.data);

@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { LoginContext } from '../contexts/LoginContext';
 import bgCover from '../images/bgCover.png'
 import axios from 'axios';
+import { baseUrl } from '../utils/baseUrl';
 
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
@@ -14,12 +15,12 @@ export default function Login() {
 
     const { setPhoneGlobal, setUserIdGlobal, setPublisherGlobal, setIsLogin, userIdGlobal, isLogin, phoneGlobal } = useContext(LoginContext);
 
-    const handleOnClick = async(event) => {
+    const handleOnClick = async (event) => {
         event.preventDefault();
 
         if (phone.length === 10 && password.length >= 6 && password.length <= 16) {
             try {
-                await axios.post('http://localhost:8000/api/login', {
+                await axios.post(`${baseUrl}/api/login`, {
                     phone: phone,
                     password: password,
                 })
@@ -32,11 +33,11 @@ export default function Login() {
                         setPublisherGlobal(data.data.publisher);
                         setUserIdGlobal(data.data._id);
 
-                        console.log(data.data._id); 
+                        console.log(data.data._id);
                         console.log(userIdGlobal);
 
                         localStorage.setItem('isLogin', 'true');
-                        localStorage.setItem('userIdGlobal', data.data._id); 
+                        localStorage.setItem('userIdGlobal', data.data._id);
 
                         // navigate to the home page
                         navigate('/')
@@ -47,7 +48,7 @@ export default function Login() {
                         // setError(error.response.data.message);
                     })
 
-                    console.log(userIdGlobal);
+                console.log(userIdGlobal);
             } catch (error) {
                 console.log(error);
             }

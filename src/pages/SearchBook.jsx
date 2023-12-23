@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import BooksList from '../components/BooksList';
 import axios from 'axios';
 import Footer from '../components/Footer';
+import { baseUrl } from '../utils/baseUrl';
 
 export default function SearchBook() {
     const [books, setBooks] = useState([]);
@@ -44,7 +45,7 @@ export default function SearchBook() {
 
     useEffect(() => {
         try {
-            axios.get('http://localhost:8000/api/all-books')
+            axios.get(`${baseUrl}/api/all-books`)
                 .then(data => {
                     console.log(data)
                     setBooks(data.data);
