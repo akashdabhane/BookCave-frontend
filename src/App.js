@@ -13,6 +13,7 @@ import { LoginContext } from '../src/contexts/LoginContext'
 import ContactUs from "./pages/ContactUs";
 import ForgetPassword from "./pages/ForgetPassword";
 import PrivateProtectRoute from "./PrivateProtectRoute/PrivateProtectRoute";
+import AddBook from "./pages/AddBook";
 
 
 function App() {
@@ -71,6 +72,10 @@ function App() {
                 <MyProfile />
               </PrivateProtectRoute>} />
 
+            <Route path="/add-book" element={
+              <PrivateProtectRoute>
+                <AddBook />
+              </PrivateProtectRoute>} />
             <Route path="*" element={<p className="flex justify-center items-center h-[100vh] text-2xl font-bold">There's nothing here: 404!</p>} />
           </Routes>
         </LoginContext.Provider>

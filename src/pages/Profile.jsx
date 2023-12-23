@@ -32,7 +32,7 @@ export default function Profile() {
         {
             displayName: "Add Books",
             icon: <CiSquarePlus />,
-            link: '/add-books'
+            link: '/add-book'
         },
         // {
         //     displayName: "Payment History",
