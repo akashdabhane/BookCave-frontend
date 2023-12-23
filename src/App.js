@@ -21,7 +21,6 @@ function App() {
   const [userIdGlobal, setUserIdGlobal] = useState(null);
   const [publisherGlobal, setPublisherGlobal] = useState(false);
 
-
   return (
     <div className="App ">
       <BrowserRouter>
