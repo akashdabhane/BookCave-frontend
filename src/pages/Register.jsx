@@ -20,6 +20,9 @@ export default function Register() {
     const handleOnClick = (event) => {
         event.preventDefault();
 
+        console.log(isPublication); 
+        console.log(publicationName); 
+
         console.log(phone)
         if (phone.length === 10 && password.length >= 6 && password.length <= 16 && password === repeatPassword) {
             try {
@@ -67,7 +70,7 @@ export default function Register() {
 
                     <div className="flex justify-between text-sm">
                         <div className="">
-                            <input type="checkbox" name="publication" id="publication" value={isPublication} onChange={(event) => event.target.checked === true ? setIsPublication(true) : setIsPublication(false)} />
+                            <input type="checkbox" name="publication" id="publication" onChange={(event) => event.target.checked === true ? setIsPublication(true) : setIsPublication(false)} />
                             <label htmlFor="publication">Publication</label>
                         </div>
                     </div>

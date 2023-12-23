@@ -38,6 +38,7 @@ export default function Login() {
 
                         localStorage.setItem('isLogin', 'true');
                         localStorage.setItem('userIdGlobal', data.data._id);
+                        localStorage.setItem('publisher', true); 
 
                         // navigate to the home page
                         navigate('/')

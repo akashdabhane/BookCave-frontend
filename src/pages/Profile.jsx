@@ -70,13 +70,19 @@ export default function Profile() {
                     profileList.map((item, index) => (
                         <div className="" key={index}>
                             {
-                                item.link === '/add-books' && publisherGlobal ?
+                                item.link === '/add-books' && localStorage.getItem('publisher') === 'true' ?
                                     <div className={`flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => navigate(item.link)} >
                                         <span className='text-4xl'>{item.icon}</span>
                                         <span className='text-lg'>{item.displayName}</span>
                                     </div>
                                     :
-                                    <div className={`${item.link === '/add-books' ? "hidden" : "flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => navigate(item.link)} >
+                                    <div className={`${item.link === '/add-books' ? "hidden" : "flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => {
+                                        if (item.displayName === "Logout" && item.link === "/login") {
+                                            localStorage.removeItem('isLogin'); 
+                                            localStorage.removeItem('userIdGlobal'); 
+                                        }
+                                        navigate(item.link)
+                                    }} >
                                         <span className='text-4xl'>{item.icon}</span>
                                         <span className='text-lg'>{item.displayName}</span>
                                     </div>

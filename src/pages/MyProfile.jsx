@@ -117,7 +117,7 @@ export default function MyProfile() {
                             <button className={`${editMobile ? "text-blue-700 font-semibold" : "hidden"}`} onClick={() => setEditMobile(false)}>Cancel</button>
                         </div>
                         <div className="space-x-4">
-                            <input type="number" name="phoneNumber" id="phoneNumber" value={userData.phone} className='rounded p-3 px-4 border border-blue-400' disabled={!editMobile} placeholder='phone number' />
+                            <input type="number" name="phoneNumber" id="phoneNumber" value={userData.phone} onChange={(e) => setUserData({ ...userData, phone: e.target.value })} className='rounded p-3 px-4 border border-blue-400' disabled={!editMobile} placeholder='phone number' />
                             <button className={`${editMobile ? "text-center px-6 p-3 rounded bg-blue-800 text-white" : "hidden"}`} onClick={() => setEditMobile(false)}>Save</button>
                         </div>
                     </div>

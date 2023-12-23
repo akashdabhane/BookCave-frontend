@@ -71,7 +71,7 @@ function App() {
                 <MyProfile />
               </PrivateProtectRoute>} />
 
-            <Route path="*" element={<p>There's nothing here: 404!</p>} />
+            <Route path="*" element={<p className="flex justify-center items-center h-[100vh] text-2xl font-bold">There's nothing here: 404!</p>} />
           </Routes>
         </LoginContext.Provider>
       </BrowserRouter>
