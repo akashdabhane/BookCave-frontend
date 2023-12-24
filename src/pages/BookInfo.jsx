@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { FaRegStar } from "react-icons/fa";
 import { baseUrl } from '../utils/baseUrl'
 
@@ -38,7 +38,7 @@ export default function BookInfo() {
                 <div className=" space-y-6  px-8 py-2 ">
                     <div className="flex flex-col  md:flex-row space-x-0 md:space-x-4 space-y-3 md:space-y-0">
                         <div className="flex space-x-4">
-                            <img className='w-48 h-60' src={book.cover} alt="" />
+                            <img className='w-48 h-60' src={book.image.url} alt="book image" />
                             <div className="space-y-2">
                                 <h4 className='text-xl'>{book.name}</h4>
                                 <span className="athor text-gray-600">{book.author}</span>
@@ -67,7 +67,9 @@ export default function BookInfo() {
                             </div>
                         </div>
                         <div className="buy flex justify-center items-start space-x-4 sm:px-2 md:px-11">
-                            <button className='bg-blue-600 p-3 px-10 text-white '>Buy Book</button>
+                            <Link to={'/place-order'}>
+                                <button className='bg-blue-600 p-3 px-10 text-white '>Buy Book</button>
+                            </Link>
                             <button className='bg-blue-600 p-3 px-10 text-white '>Renk Book</button>
                         </div>
                     </div>

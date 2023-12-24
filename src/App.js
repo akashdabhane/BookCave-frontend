@@ -14,6 +14,7 @@ import ContactUs from "./pages/ContactUs";
 import ForgetPassword from "./pages/ForgetPassword";
 import PrivateProtectRoute from "./PrivateProtectRoute/PrivateProtectRoute";
 import AddBook from "./pages/AddBook";
+import PlaceOrder from "./pages/PlaceOrder";
 
 
 function App() {
@@ -76,6 +77,12 @@ function App() {
               <PrivateProtectRoute>
                 <AddBook />
               </PrivateProtectRoute>} />
+
+            <Route path="/place-order" element={
+              <PrivateProtectRoute>
+                <PlaceOrder />
+              </PrivateProtectRoute>} />
+
             <Route path="*" element={<p className="flex justify-center items-center h-[100vh] text-2xl font-bold">There's nothing here: 404!</p>} />
           </Routes>
         </LoginContext.Provider>
