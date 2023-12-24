@@ -15,36 +15,53 @@ export default function AddBook() {
         publisheredBy: localStorage.getItem('userIdGlobal')
     })
 
-    const handleAddBook = (event) => {
+    const handleAddBook = async(event) => {
         event.preventDefault();
 
         try {
-            axios.post(`${baseUrl}/api/add-book`, bookData)
+            console.log('inside try')
+            console.log(bookData); 
+            await axios.post(`${baseUrl}/api/add-book`, bookData)
                 .then(data => {
                     console.log(data);
-                    alert("Successfully added the book!");
-
-                    // setBookData({
-                    //     ...bookData,
-                    //     [name]: ''
-                    // });
+                    alert("Successfully added the book!"); 
                 })
                 .catch(error => {
                     console.log(error);
                 })
-        } catch (error) {
+                    } catch (error) {
             console.log(error);
         }
     }
 
+
+    const handleImage = (event) => {
+        let file = event.target.files[0]; 
+        if(file.size > 1000000) {
+            alert('Please upload image less than 1MB size'); 
+            event.target.value = null; 
+        }else {
+            setFileToBase(file); 
+        }
+    }
+
+    const setFileToBase = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file); 
+        reader.onloadend = () => {
+            setBookData({
+                ...bookData, 
+                image: reader.result,
+            }); 
+        }
+    }
+
     const handleOnChange = (event) => {
-        console.log('akash')
-        console.log(event.target.value);
         const { name, value } = event.target;
         setBookData({
             ...bookData,
             [name]: value
-        });
+        })
     }
 
     return (
@@ -60,10 +77,10 @@ export default function AddBook() {
                     <textarea className='border p-2 outline-none ' name="description" id="description" cols="30" rows="8" placeholder='description of book...' onChange={handleOnChange}></textarea>
                     <input className='border p-2 outline-none ' inputMode='numeric' type="text" name="quantity" id="quantity" placeholder='number of available copies..' onChange={handleOnChange} />
 
-                    <input className='border p-2 outline-none w-full hidden' type="file" id='image' name='image' alt="image" placeholder='book cover' />
-                    <label className='w-full rounded border-2 border-gray-700 bg-gray-300 text-gray-500 text-center p-2 cursor-pointer' htmlFor="image">
+                    <input className='border p-2 outline-none w-full ' type="file" id='image' name='image' alt="image" placeholder='book cover' onChange={handleImage} />
+                    {/* <label className='w-full rounded border-2 border-gray-700 bg-gray-300 text-gray-500 text-center p-2 cursor-pointer' htmlFor="image" >
                         add an image
-                    </label>
+                    </label> */}
 
                     <button onClick={handleAddBook} className='bg-blue-600 text-white text-lg font-semibold p-2 my-8 '>Add a book</button>
                 </form>
