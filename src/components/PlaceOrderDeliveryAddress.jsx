@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-export default function PlaceOrderDeliveryAddress({display, setDisplay}) {
+export default function PlaceOrderDeliveryAddress({ display, setDisplay }) {
+
     return (
         <div onClick={() => setDisplay(1)}>
             <div className={`flex p-4 text-lg space-x-4 cursor-pointer ${display === 1 ? "bg-blue-600 text-white" : "text-gray-400 shadow-md"} `}>

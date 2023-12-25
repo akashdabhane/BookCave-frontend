@@ -5,7 +5,7 @@ export default function PlaceOrderLogin({ display, setDisplay }) {
     return (
         <div onClick={() => setDisplay(0)}>
             <div className={`flex p-4 text-lg space-x-4 cursor-pointer  ${display === 0 ? "bg-blue-600 text-white" : "text-gray-400 shadow-md"} `}>
-                <span className={`p-[0.08rem] px-[0.5rem] rounded text-blue-600 bg-white ${display === 0 ? "bg-white" : "bg-gray-200 "}`}>{1}</span>
+                <span className={`p-[0.08rem] px-[0.5rem] rounded text-blue-600 ${display === 0 ? "bg-white" : "bg-gray-200 "}`}>{1}</span>
                 <h2 className='font-bold text-xl capitalize '>LOGIN</h2>
             </div>
 
@@ -23,7 +23,7 @@ export default function PlaceOrderLogin({ display, setDisplay }) {
 
                         <h4 className='text-blue-600 font-semibold '>Logout and Sign in to another account</h4>
 
-                        <button className='bg-orange-600 text-white font-semibold w-full text-lg p-3'>Continue Checkout</button>
+                        <button className='bg-orange-600 text-white font-semibold w-full text-lg p-3' onClick={() => setDisplay(1)}>Continue Checkout</button>
                     </div>
 
                     <div className="space-y-2 ">
