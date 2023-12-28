@@ -29,7 +29,7 @@ export default function PlaceOrderPaymentOptions({ display, setDisplay }) {
         }
     ]
 
-    
+
     return (
         <div onClick={() => setDisplay(3)}>
             <div className={`flex p-4 text-lg space-x-4 cursor-pointer ${display === 3 ? "bg-blue-600 text-white" : "text-gray-400 shadow-md "} `}>
@@ -95,6 +95,16 @@ export default function PlaceOrderPaymentOptions({ display, setDisplay }) {
                                     </div>
                                 )}
                             {item.id === 1 && <p>{item.describe}</p>}
+
+
+                            {
+                                item.id === 3 && paymentOption === 3 && (
+                                    <div className="space-x-4 px-5 my-4">
+                                        <input type="text" className='px-4 p-3 outline-1 outline-blue-400 border text-lg ' placeholder='enter characters' />
+                                        <button className='px-4 p-3 bg-orange-600 text-white text-lg capitalize'>confirm order</button>
+                                    </div>
+                                )
+                            }
                         </div>
                     ))
                 }

@@ -45,7 +45,7 @@ export default function PlaceOrderLogin({ display, setDisplay }) {
                         </ul>
                     </div>
                 </div>
-                <p className='px-16 '>Please note that upon clicking "logout" will lose all the items in cart and will be redirected to Flipkart phone page </p>
+                <p className='px-16 text-gray-500'>Please note that upon clicking "logout" will lose all the items in cart and will be redirected to Flipkart phone page </p>
             </div>
 
         </div>

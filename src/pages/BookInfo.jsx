@@ -42,7 +42,7 @@ export default function BookInfo() {
                                 <div className="flex space-x-4">
                                     <img className='w-48 h-60' src={book.image.url} alt="book image" />
                                     <div className="space-y-2">
-                                        <h4 className='text-xl'>{book.name}</h4>
+                                        <h4 className='text-xl'>{book.title}</h4>
                                         <span className="athor text-gray-600">{book.author}</span>
 
                                         <div className="flex space-x-4">
