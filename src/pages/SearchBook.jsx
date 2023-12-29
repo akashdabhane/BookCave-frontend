@@ -8,6 +8,7 @@ import { baseUrl } from '../utils/baseUrl';
 
 export default function SearchBook() {
     const [books, setBooks] = useState([]);
+    const [isLoding, setIsLoding] = useState(true); 
     // const books = [
     //     {
     //         id: 1,
@@ -49,6 +50,7 @@ export default function SearchBook() {
                 .then(data => {
                     console.log(data)
                     setBooks(data.data);
+                    setIsLoding(false); 
                 })
                 .catch(error => {
                     console.log(error)
@@ -70,7 +72,7 @@ export default function SearchBook() {
                 <h3 className='w-full p-2 bg-gray-400 text-center text-lg font-semibold border-b-2 border-gray-700'>Search for Available book</h3>
             </main>
 
-            <BooksList books={books} />
+            <BooksList books={books} isLoding={isLoding} />
 
             <Footer />
         </div>

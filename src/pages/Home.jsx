@@ -14,6 +14,7 @@ import { baseUrl } from '../utils/baseUrl'
 export default function Home() {
     const navigate = useNavigate();
     const [books, setBooks] = useState([]);
+    const [isLoding, setIsLoding] = useState(true); 
 
     const SlideBarImg = [
         "https://images.pexels.com/photos/159778/books-reading-series-narnia-159778.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -28,6 +29,7 @@ export default function Home() {
                 .then(data => {
                     console.log(data)
                     setBooks(data.data);
+                    setIsLoding(false); 
                 })
                 .catch(error => {
                     console.log(error)
@@ -63,7 +65,7 @@ export default function Home() {
                 }
             </Slider>
 
-            <BooksList books={books} />
+            <BooksList books={books} isLoding={isLoding} />
 
             <Footer />
         </div>
