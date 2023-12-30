@@ -61,7 +61,7 @@ export default function Profile() {
             <Navbar />
 
             <div className="user text-center my-8 space-y-4">
-                <img className='rounded-full w-48 mx-auto' src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=996&t=st=1702748520~exp=1702749120~hmac=6c599e5dd02ecb88bc1567b729a608d4b031bacb5f23a7442cd62d83c5cb513e" alt="user photo" />
+                <img className='rounded-full w-36 h-36 mx-auto' src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=996&t=st=1702748520~exp=1702749120~hmac=6c599e5dd02ecb88bc1567b729a608d4b031bacb5f23a7442cd62d83c5cb513e" alt="user photo" />
                 <h2 className='font-semibold text-lg'>User name</h2>
             </div>
 

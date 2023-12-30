@@ -62,10 +62,10 @@ export default function Login() {
 
     return (
         <div className='w-full py-24' style={{ backgroundImage: `url(${bgCover})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <div className='m-auto text-black bg-white p-6 w-[36%] h-[33rem] rounded-md  align-middle py-20 space-y-8'>
-                <h2 className="heading mx-24 text-2xl font-bold">Login</h2>
-                <span className='mx-24 text-sm text-red-600'>{error}</span>
-                <form className='text-center mx-24 space-y-4' >
+            <div className='mx-4 md:m-auto text-black bg-white p-6 md:w-[36%] h-[33rem] rounded-md  align-middle py-20 space-y-8'>
+                <h2 className="heading mx-4 md:mx-24 text-2xl font-bold">Login</h2>
+                <span className='mx-4 md:mx-24 text-sm text-red-600'>{error}</span>
+                <form className='text-center mx-4 md:mx-24 space-y-4' >
                     <input type="text" inputMode='numeric' value={phone} onChange={(event) => setPhone(event.target.value)} placeholder='enter phone number' className='border-[1px] w-full p-4 outline-none' />
                     <div className="flex items-center align-middle border-[1px] w-full">
                         <input type={`${showPassword ? 'text' : 'password'}`} value={password} onChange={(event) => setPassword(event.target.value)} autoComplete='false' placeholder='password' className='outline-none p-4 w-full' />
@@ -86,8 +86,8 @@ export default function Login() {
                     </button>
                 </form>
 
-                <div className="mx-24 text-sm space-x-2">
-                    <span>New to Shaadi?</span>
+                <div className="mx-6 md:mx-24 text-sm space-x-2">
+                    <span>New to BookCave?</span>
                     <Link to='/register' className='text-blue-600'>Register</Link>
                 </div>
             </div>

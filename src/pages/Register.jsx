@@ -59,10 +59,10 @@ export default function Register() {
 
     return (
         <div className=' py-4' style={{ backgroundImage: `url(${bgCover})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <main className='m-auto text-black bg-white p-6 w-[36%] h-[37rem] rounded-md my-[4rem] align-middle py-16 space-y-8'>
-                <h2 className="heading mx-24 text-2xl font-bold">Register</h2>
-                <span className='mx-24 text-sm text-red-600'>{error}</span>
-                <form className='text-center mx-24 space-y-4' >
+            <main className='md:mx-auto text-black bg-white p-6 mx-4 md:w-[36%] h-[40rem] rounded-md my-[4rem] align-middle py-16 space-y-8'>
+                <h2 className="heading mx-4 md:mx-24 text-2xl font-bold">Register</h2>
+                <span className='mx-4 md:mx-24 text-sm text-red-600'>{error}</span>
+                <form className='text-center mx-4 md:mx-24 space-y-4' >
                     <input type="text" inputMode='numeric' value={phone} onChange={(event) => setPhone(event.target.value)} placeholder='enter phone number' className='border-[1px] w-full p-4 outline-none' />
                     <input type={'password'} autoComplete='false' value={password} onChange={(event) => setPassword(event.target.value)} placeholder='password' className='outline-none p-4 w-full border-[1px] ' />
 
@@ -82,7 +82,7 @@ export default function Register() {
                     </button>
                 </form>
 
-                <div className="mx-24 text-sm">
+                <div className="mx-6 md:mx-24 text-sm">
                     <span> Already have account </span>
                     <Link to='/login' className='text-blue-400'>Login</Link>
                 </div>

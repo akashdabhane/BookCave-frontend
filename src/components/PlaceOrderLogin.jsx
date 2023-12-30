@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaTruck, FaBell, FaStar } from "react-icons/fa";
 
-export default function PlaceOrderLogin({ display, setDisplay }) {
+export default function PlaceOrderLogin({ display, setDisplay, userData }) {
+    useEffect(() => {
+        console.log(userData); 
+    }, [])
     return (
         <div onClick={() => setDisplay(0)}>
             <div className={`flex p-4 text-lg space-x-4 cursor-pointer  ${display === 0 ? "bg-blue-600 text-white" : "text-gray-400 shadow-md"} `}>
@@ -14,11 +17,11 @@ export default function PlaceOrderLogin({ display, setDisplay }) {
                     <div className="space-y-2 w-[40%]">
                         <div className="space-x-4 text-lg ">
                             <span className='text-gray-500 '>Name</span>
-                            <span className='font-semibold '>{"Akash Dabhane"}</span>
+                            <span className='font-semibold '>{userData?.name}</span>
                         </div>
                         <div className="space-x-4 text-lg ">
                             <span className='text-gray-500'>Phone</span>
-                            <span className='font-semibold'>{"801006987"}</span>
+                            <span className='font-semibold'>{userData.phone}</span>
                         </div>
 
                         <h4 className='text-blue-600 font-semibold '>Logout and Sign in to another account</h4>
