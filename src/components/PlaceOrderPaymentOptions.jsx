@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-export default function PlaceOrderPaymentOptions({ display, setDisplay }) {
+export default function PlaceOrderPaymentOptions({ display, setDisplay, setConfirmOrder }) {
     const [paymentOption, setPaymentOption] = useState(null);
     const [chooseUpi, setChooseUpi] = useState(null);
 
@@ -101,7 +101,7 @@ export default function PlaceOrderPaymentOptions({ display, setDisplay }) {
                                 item.id === 3 && paymentOption === 3 && (
                                     <div className="space-x-4 px-5 my-4">
                                         <input type="text" className='px-4 p-3 outline-1 outline-blue-400 border text-lg ' placeholder='enter characters' />
-                                        <button className='px-4 p-3 bg-orange-600 text-white text-lg capitalize'>confirm order</button>
+                                        <button className='px-4 p-3 bg-orange-600 text-white text-lg capitalize' onClick={() => setConfirmOrder(true)}>confirm order</button>
                                     </div>
                                 )
                             }

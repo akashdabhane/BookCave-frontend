@@ -81,7 +81,7 @@ function App() {
                   <AddBook />
                 </PrivateProtectRoute>} />
 
-              <Route path="/place-order" element={
+              <Route path="/place-order/:id" element={
                 <PrivateProtectRoute>
                   <PlaceOrder />
                 </PrivateProtectRoute>} />

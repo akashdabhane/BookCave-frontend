@@ -78,7 +78,7 @@ export default function BookInfo() {
                                 </div>
                             </div>
                             <div className="buy flex justify-center items-start space-x-4 sm:px-2 md:px-11">
-                                <Link to={'/place-order'}>
+                                <Link to={`/place-order/${book._id}`}>
                                     <button className='bg-blue-600 p-3 px-10 text-white '>Buy Book</button>
                                 </Link>
                                 <button className='bg-blue-600 p-3 px-10 text-white '>Renk Book</button>

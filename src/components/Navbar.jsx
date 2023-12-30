@@ -16,6 +16,9 @@ export default function Navbar() {
     const handleLogoutClick = () => {
         navigate('/login');
         localStorage.setItem('isLogin', 'false'); 
+        localStorage.removeItem('isLogin'); 
+        localStorage.removeItem('userIdGlobal'); 
+        localStorage.removeItem('publisher'); 
         isLogin(false); 
     }
 

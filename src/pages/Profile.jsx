@@ -34,11 +34,7 @@ export default function Profile() {
             icon: <CiSquarePlus />,
             link: '/add-book'
         },
-        // {
-        //     displayName: "Payment History",
-        //     icon: <MdOutlinePayment />,
-        //     link: '/'
-        // },
+     
         {
             displayName: "Contact us",
             icon: <SiGamedeveloper />,
@@ -70,19 +66,20 @@ export default function Profile() {
                     profileList.map((item, index) => (
                         <div className="" key={index}>
                             {
-                                item.link === '/add-books' && localStorage.getItem('publisher') === 'true' ?
+                                (item.link === '/add-book' && localStorage.getItem('publisher') === 'true') ?
                                     <div className={`flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => navigate(item.link)} >
                                         <span className='text-4xl'>{item.icon}</span>
                                         <span className='text-lg'>{item.displayName}</span>
                                     </div>
                                     :
-                                    <div className={`${item.link === '/add-books' ? "hidden" : "flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => {
+                                    <div className={`${item.link === '/add-book' ? "hidden" : "flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => {
                                         if (item.displayName === "Logout" && item.link === "/login") {
                                             localStorage.removeItem('isLogin'); 
                                             localStorage.removeItem('userIdGlobal'); 
+                                            localStorage.removeItem('publisher');
                                         }
-                                        navigate(item.link)
-                                    }} >
+                                        navigate(item.link) }}>
+
                                         <span className='text-4xl'>{item.icon}</span>
                                         <span className='text-lg'>{item.displayName}</span>
                                     </div>
