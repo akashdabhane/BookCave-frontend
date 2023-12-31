@@ -9,9 +9,9 @@ export default function PlaceOrderDeliveryAddress({ display, setDisplay }) {
                 <h2 className='font-bold text-xl capitalize '>DELIVERY ADDRESS</h2>
             </div>
 
-            <div className={`${display === 1 ? "px-8 py-4 space-y-2 shadow-md " : "hidden"}`}>
-                <div className=" space-x-4">
-                    <span className='font-semibold text-lg '>{"Akash Dunda Dabhane"}</span>
+            <div className={`${display === 1 ? "px-4 md:px-8 py-4 space-y-2 shadow-md " : "hidden"}`}>
+                <div className="space-x-4 w-full">
+                    <span className='font-semibold text-lg '>{"Akash Dabhane"}</span>
                     <span className='font-semibold text-lg  '>{"801236548"}</span>
                     <button className='font-semibold text-lg text-blue-600 float-right'>Edit</button>
                 </div>

@@ -81,7 +81,7 @@ export default function ContactUs() {
                     </main>
                 </form>
 
-                <img className='w-[30rem] align-middle' src="https://westward360.com/wp-content/uploads/2021/01/Hero-Contact-Image.svg" alt="contact us" />
+                <img className='-ml-96 opacity-40 md:opacity-100 w-[30rem] align-middle' src="https://westward360.com/wp-content/uploads/2021/01/Hero-Contact-Image.svg" alt="contact us" />
             </div>
 
             <Footer />

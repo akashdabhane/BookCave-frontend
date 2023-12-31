@@ -88,8 +88,25 @@ export default function PlaceOrderPaymentOptions({ display, setDisplay, setConfi
                                         <div className="space-y-3 ">
                                             <input className='px-5 p-3 border outline-1 w-96 outline-blue-600' type="text" name="cardNumber" id="cardNumber" placeholder='Enter Card Number' />
                                             <div className="space-x-2 ">
-                                                <input className='px-5 p-3 border outline-1 outline-blue-600' type="date" name="expiryDate" id="expiryDate" />
-                                                <input className='px-5 p-3 border outline-1 w-40 outline-blue-600' type="number" name="Cvv" id="Cvv" placeholder='CVV' />
+                                                <input
+                                                    className='px-5 p-3 border outline-1 w-40 outline-blue-600'
+                                                    type="month"
+                                                    name="expiryDate"
+                                                    id="expiryDate"
+                                                    onChange={(event) => console.log(event.target.value)} // You can replace this with your logic
+                                                />
+                                                <input
+                                                    className="px-5 p-3 border outline-1 w-40 outline-blue-600"
+                                                    type="number"
+                                                    name="Cvv"
+                                                    id="Cvv"
+                                                    placeholder="CVV"
+                                                    style={{
+                                                        MozAppearance: 'textfield', // For Firefox
+                                                        WebkitAppearance: 'none', // For Chrome/Safari/Opera
+                                                        appearance: 'none', // For others
+                                                    }}
+                                                />
                                             </div>
                                         </div>
                                     </div>

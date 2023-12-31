@@ -64,7 +64,7 @@ export default function PlaceOrder() {
             }
 
 
-            <div className={`space-y-3`}>
+            <div className={`space-y-3 mx-4`}>
                 <PlaceOrderLogin display={display} setDisplay={setDisplay} userData={userData} />
 
                 <PlaceOrderDeliveryAddress display={display} setDisplay={setDisplay} userData={userData} />

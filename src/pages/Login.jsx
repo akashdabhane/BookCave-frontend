@@ -61,7 +61,7 @@ export default function Login() {
     }
 
     return (
-        <div className='w-full py-24' style={{ backgroundImage: `url(${bgCover})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className='w-full h-[100vh] py-24' style={{ backgroundImage: `url(${bgCover})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className='mx-4 md:m-auto text-black bg-white p-6 md:w-[36%] h-[33rem] rounded-md  align-middle py-20 space-y-8'>
                 <h2 className="heading mx-4 md:mx-24 text-2xl font-bold">Login</h2>
                 <span className='mx-4 md:mx-24 text-sm text-red-600'>{error}</span>

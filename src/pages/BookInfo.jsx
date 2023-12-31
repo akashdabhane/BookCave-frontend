@@ -41,7 +41,7 @@ export default function BookInfo() {
             {
                 // Object.keys(book).length !== 0 && (
                 <div className=" text-black space-y-2 w-full py-2 ">
-                    <div className=" space-y-6  px-8 py-2 ">
+                    <div className=" space-y-6  px-4 md:px-8 py-2 ">
                         <div className="flex flex-col  md:flex-row space-x-0 md:space-x-4 space-y-3 md:space-y-0">
                             <div className="flex space-x-4">
                                 {

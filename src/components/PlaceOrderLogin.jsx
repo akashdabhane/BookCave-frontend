@@ -13,8 +13,8 @@ export default function PlaceOrderLogin({ display, setDisplay, userData }) {
             </div>
 
             <div className={`${display === 0 ? "shadow-md py-4" : "hidden"}`}>
-                <div className="p-8 px-16 flex justify-between ">
-                    <div className="space-y-2 w-[40%]">
+                <div className="p-8 md:px-16 flex flex-col md:flex-row justify-between ">
+                    <div className="space-y-2 md:w-[40%]">
                         <div className="space-x-4 text-lg ">
                             <span className='text-gray-500 '>Name</span>
                             <span className='font-semibold '>{userData?.name}</span>
@@ -48,7 +48,7 @@ export default function PlaceOrderLogin({ display, setDisplay, userData }) {
                         </ul>
                     </div>
                 </div>
-                <p className='px-16 text-gray-500'>Please note that upon clicking "logout" will lose all the items in cart and will be redirected to Flipkart phone page </p>
+                <p className='px-2 md:px-16 text-gray-500'>Please note that upon clicking "logout" will lose all the items in cart and will be redirected to Flipkart phone page </p>
             </div>
 
         </div>
