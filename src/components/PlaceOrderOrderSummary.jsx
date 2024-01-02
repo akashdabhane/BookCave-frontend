@@ -2,10 +2,7 @@ import React, { useState } from 'react'
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 
 
-export default function PlaceOrderOrderSummary({ display, setDisplay, bookInfo }) {
-    const [count, setCount] = useState(1);
-
-
+export default function PlaceOrderOrderSummary({ display, setDisplay, bookInfo, setQuantity, quantity }) {
 
     return (
         <div onClick={() => setDisplay(2)}>
@@ -20,9 +17,9 @@ export default function PlaceOrderOrderSummary({ display, setDisplay, bookInfo }
                         <div className="space-y-4 ">
                             <img className='w-40 px-8' src={bookInfo?.image?.url || "https://res.cloudinary.com/domlldpib/image/upload/v1703696906/BookCave/xfmwrviiz0tkn43qsvep.jpg"} alt="" />
                             <div className="flex space-x-2 items-center text-lg ">
-                                <CiCircleMinus className={` text-4xl cursor-pointer`} onClick={() => count > 1 && setCount(count - 1)} />
-                                <div className="px-5 p-1 border-2 rounded border-gray-500">{count}</div>
-                                <CiCirclePlus className='text-4xl cursor-pointer' onClick={() => setCount(count + 1)} />
+                                <CiCircleMinus className={` text-4xl cursor-pointer`} onClick={() => quantity > 1 && setQuantity(quantity - 1)} />
+                                <div className="px-5 p-1 border-2 rounded border-gray-500">{quantity}</div>
+                                <CiCirclePlus className='text-4xl cursor-pointer' onClick={() => setQuantity(quantity + 1)} />
                             </div>
                         </div>
 
