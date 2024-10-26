@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-
-
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function PlaceOrderPaymentOptions({ display, setDisplay, setConfirmOrder, handleConfirmOrder }) {
     const [paymentOption, setPaymentOption] = useState(null);
     const [chooseUpi, setChooseUpi] = useState(null);
 
+    function onChange(value) {
+        console.log("Captcha value:", value);
+    }
 
     const options = [
         {
@@ -120,6 +122,11 @@ export default function PlaceOrderPaymentOptions({ display, setDisplay, setConfi
                                 item.id === 3 && paymentOption === 3 && (
                                     <div className="space-x-4 px-5 my-4">
                                         <input type="text" className='px-4 p-3 outline-1 outline-blue-400 border text-lg ' placeholder='enter characters' />
+                                        {/* <ReCAPTCHA
+                                            sitekey="6LcXOJMpAAAAAF8O3GvMec0uxIHxKMJP3EfAtAk5"
+                                            onChange={onChange}
+                                        /> */}
+
                                         <button className='px-4 p-3 bg-orange-600 text-white text-lg capitalize' onClick={(event) => {
                                             handleConfirmOrder(event)
                                             setConfirmOrder(true)

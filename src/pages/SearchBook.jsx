@@ -8,7 +8,7 @@ import { baseUrl } from '../utils/baseUrl';
 
 export default function SearchBook() {
     const [books, setBooks] = useState([]);
-    const [isLoding, setIsLoding] = useState(true); 
+    const [isLoding, setIsLoding] = useState(true);
     // const books = [
     //     {
     //         id: 1,
@@ -46,11 +46,11 @@ export default function SearchBook() {
 
     useEffect(() => {
         try {
-            axios.get(`${baseUrl}/api/all-books`)
+            axios.get(`${baseUrl}/books/all-books`)
                 .then(data => {
                     console.log(data)
                     setBooks(data.data);
-                    setIsLoding(false); 
+                    setIsLoding(false);
                 })
                 .catch(error => {
                     console.log(error)
@@ -62,17 +62,19 @@ export default function SearchBook() {
 
 
     return (
-        <div className='md:mx-[20%] bg-white '>
+        <div className=' bg-white '>
             <Navbar />
-            <main className='space-y-3 my-4'>
-                <div className="flex items-center justify-center space-x-3">
-                    <input className='w-80 p-2 px-4 rounded border-[1px] border-gray-600 outline outline-blue-500 ' type="text" placeholder='search for book' />
-                    <FaMagnifyingGlass className='bg-blue-600 text-4xl p-2 cursor-pointer rounded' />
-                </div>
-                <h3 className='w-full p-2 bg-gray-400 text-center text-lg font-semibold border-b-2 border-gray-700'>Search for Available book</h3>
-            </main>
+            <div className="">
+                <main className='space-y-3 my-4 md:mx-28'>
+                    <div className="flex items-center justify-center space-x-3">
+                        <input className='w-80 p-2 px-4 rounded border-[1px] border-gray-600 outline outline-blue-500 ' type="text" placeholder='search for book' />
+                        <FaMagnifyingGlass className='bg-blue-600 text-4xl p-2 cursor-pointer rounded' />
+                    </div>
+                    <h3 className='w-full p-2 bg-gray-400 text-center text-lg font-semibold border-b-2 border-gray-700'>Search for Available book</h3>
+                </main>
 
-            <BooksList books={books} isLoding={isLoding} />
+                <BooksList books={books} isLoding={isLoding} />
+            </div>
 
             <Footer />
         </div>

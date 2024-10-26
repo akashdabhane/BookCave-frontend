@@ -4,11 +4,11 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 function CardSkeleton({ cards }) {
     return (
-        <div className='card-steleton w-full grid grid-cols-1 md:grid-cols-4 gap-4 md:justify-evenly md:items-center space-y-2 pt-10'>
+        <div className='card-steleton w-full grid grid-cols-1 md:grid-cols-5 gap-4 md:justify-evenly md:items-center space-y-2 pt-10'>
             {
                 Array(cards).fill(0).map((item, index) => (
                     <div key={index} className={`flex md:flex-col space-x-4 md:space-x-0 border-b md:border-b-0 px-2 md:px-2 py-2`}>
-                        <Skeleton width={200} height={250} />
+                        <Skeleton width={210} height={260} />
                         <div className="">
                             <Skeleton style={{ lineClamp: 1 }} />
                             <Skeleton />

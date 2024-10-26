@@ -26,7 +26,7 @@ export default function Register() {
         console.log(phone)
         if (phone.length === 10 && password.length >= 6 && password.length <= 16 && password === repeatPassword) {
             try {
-                axios.post(`${baseUrl}/api/register`, {
+                axios.post(`${baseUrl}/users/register`, {
                     phone: phone,
                     password: password,
                     publisher: isPublication,

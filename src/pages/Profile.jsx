@@ -34,7 +34,7 @@ export default function Profile() {
             icon: <CiSquarePlus />,
             link: '/add-book'
         },
-     
+
         {
             displayName: "Contact us",
             icon: <SiGamedeveloper />,
@@ -53,41 +53,44 @@ export default function Profile() {
     ]
 
     return (
-        <div className='md:mx-[20%] text-black bg-white'>
+        <div className=' text-black bg-white'>
             <Navbar />
 
-            <div className="user text-center my-8 space-y-4">
-                <img className='rounded-full w-36 h-36 mx-auto' src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=996&t=st=1702748520~exp=1702749120~hmac=6c599e5dd02ecb88bc1567b729a608d4b031bacb5f23a7442cd62d83c5cb513e" alt="user photo" />
-                <h2 className='font-semibold text-lg'>User name</h2>
-            </div>
+            <div className="md:mx-[20%]">
+                <div className="user text-center my-8 space-y-4">
+                    <img className='rounded-full w-36 h-36 mx-auto' src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=996&t=st=1702748520~exp=1702749120~hmac=6c599e5dd02ecb88bc1567b729a608d4b031bacb5f23a7442cd62d83c5cb513e" alt="user photo" />
+                    <h2 className='font-semibold text-lg'>User name</h2>
+                </div>
 
-            <div className="mx-4 ">
-                {
-                    profileList.map((item, index) => (
-                        <div className="" key={index}>
-                            {
-                                (item.link === '/add-book' && localStorage.getItem('publisher') === 'true') ?
-                                    <div className={`flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => navigate(item.link)} >
-                                        <span className='text-4xl'>{item.icon}</span>
-                                        <span className='text-lg'>{item.displayName}</span>
-                                    </div>
-                                    :
-                                    <div className={`${item.link === '/add-book' ? "hidden" : "flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => {
-                                        if (item.displayName === "Logout" && item.link === "/login") {
-                                            localStorage.removeItem('isLogin'); 
-                                            localStorage.removeItem('userIdGlobal'); 
-                                            localStorage.removeItem('publisher');
-                                        }
-                                        navigate(item.link) }}>
+                <div className="mx-4 ">
+                    {
+                        profileList.map((item, index) => (
+                            <div className="" key={index}>
+                                {
+                                    (item.link === '/add-book' && localStorage.getItem('publisher') === 'true') ?
+                                        <div className={`flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => navigate(item.link)} >
+                                            <span className='text-4xl'>{item.icon}</span>
+                                            <span className='text-lg'>{item.displayName}</span>
+                                        </div>
+                                        :
+                                        <div className={`${item.link === '/add-book' ? "hidden" : "flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => {
+                                            if (item.displayName === "Logout" && item.link === "/login") {
+                                                localStorage.removeItem('isLogin');
+                                                localStorage.removeItem('userIdGlobal');
+                                                localStorage.removeItem('publisher');
+                                            }
+                                            navigate(item.link)
+                                        }}>
 
-                                        <span className='text-4xl'>{item.icon}</span>
-                                        <span className='text-lg'>{item.displayName}</span>
-                                    </div>
-                            }
+                                            <span className='text-4xl'>{item.icon}</span>
+                                            <span className='text-lg'>{item.displayName}</span>
+                                        </div>
+                                }
 
-                        </div>
-                    ))
-                }
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
 
             <Footer />

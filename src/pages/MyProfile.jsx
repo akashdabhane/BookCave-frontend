@@ -31,7 +31,7 @@ export default function MyProfile() {
 
     useEffect(() => {
         try {
-            axios.get(`${baseUrl}/api/user/${userIdGlobal}`)
+            axios.get(`${baseUrl}/users/user/${userIdGlobal}`)
                 .then(data => {
                     console.log(data);
                     console.log(data.data.data);
@@ -72,10 +72,10 @@ export default function MyProfile() {
     }
 
     return (
-        <div className=' md:mx-[20%] h-full text-black  '>
+        <div className='  h-full text-black  '>
             <Navbar />
 
-            <div className="bg-white h-screen p-8 space-y-8 ">
+            <div className="bg-white h-screen p-8 space-y-8 md:mx-[20%]">
                 {/* personal Infomartion  */}
                 <div className="space-y-4">
                     <div className="flex space-x-4 items-center ">

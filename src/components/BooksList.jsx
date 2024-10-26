@@ -11,10 +11,10 @@ export default function BooksList({ books, isLoding }) {
 
 
     return (
-        <>
+        <div className='md:mx-28'>
             {isLoding && <CardSkeleton cards={20} />}
 
-            <div className="bg-white grid grid-cols-1 md:grid-cols-4 gap-4 md:justify-evenly md:items-center text-black space-y-2 w-full pt-10 ">
+            <div className="bg-white grid grid-cols-1 md:grid-cols-5 gap-4 md:justify-evenly md:items-center text-black space-y-2 w-full pt-10 ">
                 {
                     books.map((item, index) => (
                         <div className={`${bookHover === index && "transform scale-110 border bg-gray-400 rounded "}  flex md:flex-col space-x-4 md:space-x-0 border-b md:border-b-0 px-2 md:px-2 py-2 cursor-pointer`} key={index} onMouseEnter={() => setBookHover(index)} onMouseLeave={() => setBookHover(null)} onClick={() => navigate(`/book-info/${item._id}`)}>   {/* navigate({`/book-info/${item._id}`}) */}
@@ -43,6 +43,6 @@ export default function BooksList({ books, isLoding }) {
                     ))
                 }
             </div>
-        </>
+        </div>
     )
 }

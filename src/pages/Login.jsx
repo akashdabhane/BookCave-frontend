@@ -20,7 +20,7 @@ export default function Login() {
 
         if (phone.length === 10 && password.length >= 6 && password.length <= 16) {
             try {
-                await axios.post(`${baseUrl}/api/login`, {
+                await axios.post(`${baseUrl}/users/login`, {
                     phone: phone,
                     password: password,
                 })

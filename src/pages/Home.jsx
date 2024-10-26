@@ -14,7 +14,7 @@ import { baseUrl } from '../utils/baseUrl'
 export default function Home() {
     const navigate = useNavigate();
     const [books, setBooks] = useState([]);
-    const [isLoding, setIsLoding] = useState(true); 
+    const [isLoding, setIsLoding] = useState(true);
 
     const SlideBarImg = [
         "https://images.pexels.com/photos/159778/books-reading-series-narnia-159778.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -25,11 +25,11 @@ export default function Home() {
 
     useEffect(() => {
         try {
-            axios.get(`${baseUrl}/api/all-books`)
+            axios.get(`${baseUrl}/books/all-books`)
                 .then(data => {
                     console.log(data)
                     setBooks(data.data);
-                    setIsLoding(false); 
+                    setIsLoding(false);
                 })
                 .catch(error => {
                     console.log(error)
@@ -54,18 +54,20 @@ export default function Home() {
 
 
     return (
-        <div className='md:mx-[20%] text-white'>
+        <div className=' text-white'>
             <Navbar />
 
-            <Slider {...settings}>
-                {
-                    SlideBarImg.map((item, index) => (
-                        <img className='w-full h-56' src={item} alt="banner" key={index} />
-                    ))
-                }
-            </Slider>
+            <div className="">
+                <Slider {...settings}>
+                    {
+                        SlideBarImg.map((item, index) => (
+                            <img className='w-full h-80' src={item} alt="banner" key={index} />
+                        ))
+                    }
+                </Slider>
 
-            <BooksList books={books} isLoding={isLoding} />
+                <BooksList books={books} isLoding={isLoding} />
+            </div>
 
             <Footer />
         </div>

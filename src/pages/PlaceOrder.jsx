@@ -23,7 +23,7 @@ export default function PlaceOrder() {
 
     useEffect(() => {
         try {
-            axios.get(`${baseUrl}/api/user/${localStorage.getItem('userIdGlobal')}`)
+            axios.get(`${baseUrl}/users/user/${localStorage.getItem('userIdGlobal')}`)
                 .then(data => {
                     console.log(data);
                     setUserData(data.data.data);
@@ -37,7 +37,7 @@ export default function PlaceOrder() {
 
 
         try {
-            axios.get(`${baseUrl}/api/book-info/${id}`)
+            axios.get(`${baseUrl}/books/book-info/${id}`)
                 .then((data) => {
                     console.log(data.data);
                     // if (!data.data.success) throw new Error("No such book exists!");
@@ -84,7 +84,7 @@ export default function PlaceOrder() {
     }
 
     return (
-        <div className={`${confirmOrder && " fixed top-0 left-0 right-0 h-screen bg-[#7f7f7f42]"} md:mx-[20%] space-y-8 `}>
+        <div className={`${confirmOrder && " fixed top-0 left-0 right-0 h-screen bg-[#7f7f7f42]"}  space-y-8 `}>
             <Navbar />
 
             {
@@ -92,7 +92,7 @@ export default function PlaceOrder() {
             }
 
 
-            <div className={`space-y-3 mx-4`}>
+            <div className={`space-y-3 mx-4 md:mx-[20%]`}>
                 <PlaceOrderLogin display={display} setDisplay={setDisplay} userData={userData} />
 
                 <PlaceOrderDeliveryAddress display={display} setDisplay={setDisplay} userData={userData} />
