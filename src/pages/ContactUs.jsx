@@ -27,7 +27,12 @@ export default function ContactUs() {
         console.log(emailData);
 
         try {
-            axios.post(`${baseUrl}/emails/contact-us`, emailData)
+            axios.post(`${baseUrl}/emails/contact-us`, emailData, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
                 .then(data => {
                     console.log('data', data);
                 })
@@ -50,7 +55,7 @@ export default function ContactUs() {
 
                 <div className="flex justify-around">
                     <form className="">
-                        <span>note: all fields are required*</span>
+                        <span>Note: all fields are required*</span>
 
                         <main className='space-y-2 '>
                             <div className="">
@@ -59,12 +64,12 @@ export default function ContactUs() {
                             </div>
 
                             <div className="phone">
-                                <label htmlFor="phone" className='block text-sm'>phone</label>
-                                <input type="tel" className='px-4 p-2 border w-80 rounded outline-none' name="phone" id="phone" placeholder="(123)456-7890" onChange={handleOnChange} />
+                                <label htmlFor="phone" className='block text-sm'>Phone</label>
+                                <input type="tel" className='px-4 p-2 border w-80 rounded outline-none' name="phone" id="phone" placeholder="8964753102" onChange={handleOnChange} />
                             </div>
 
                             <div className="email">
-                                <label htmlFor="email" className='block text-sm'>email</label>
+                                <label htmlFor="email" className='block text-sm'>Email</label>
                                 <input type="tel" className='px-4 p-2 border w-80 rounded outline-none' name="from" id="email" placeholder="example@gmail.com" onChange={handleOnChange} />
                             </div>
 
@@ -74,7 +79,7 @@ export default function ContactUs() {
                             </div>
 
                             <div className="">
-                                <label htmlFor="message" className='block text-sm'>message</label>
+                                <label htmlFor="message" className='block text-sm'>Message</label>
                                 <textarea name="message" className='px-4 p-2 border w-80 rounded outline-none' id="message" cols="30" rows="8" onChange={handleOnChange}></textarea>
                             </div>
 

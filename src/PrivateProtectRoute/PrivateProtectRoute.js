@@ -6,7 +6,6 @@ import { LoginContext } from '../contexts/LoginContext';
 export default function PrivateProtectRoute({ children }) {
     const { isLogin } = useContext(LoginContext);
 
-    console.log(typeof(localStorage.getItem('isLogin')))
     if (localStorage.getItem('isLogin') !== 'true') {
         return <Navigate to="/login" replace />;
     }

@@ -21,7 +21,12 @@ export default function AddBook() {
         try {
             console.log('inside try')
             console.log(bookData);
-            await axios.post(`${baseUrl}/books/add-book`, bookData)
+            await axios.post(`${baseUrl}/books/add-book`, bookData, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
                 .then(data => {
                     console.log(data);
                     alert("Successfully added the book!");

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { CgProfile } from "react-icons/cg";
 import { TiShoppingCart } from "react-icons/ti";
 import { MdOutlinePayment } from "react-icons/md";
@@ -9,14 +9,37 @@ import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../contexts/LoginContext';
 import { CiSquarePlus } from "react-icons/ci";
 import Footer from '../components/Footer';
-
-
+import axios from 'axios';
+import { baseUrl } from '../utils/baseUrl';
 
 
 export default function Profile() {
+    const [loggedInUser, setLoggedInUser] = useState({});
     const navigate = useNavigate();
 
-    const { publisherGlobal } = useContext(LoginContext);
+    useEffect(() => {
+        axios.get(`${baseUrl}/users/`, {
+            withCredentials: true,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+            }
+        })
+            .then(response => {
+                console.log(response.data.data);
+                setLoggedInUser(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [])
+
+    const handleLogoutClick = () => {
+        localStorage.removeItem('isLogin');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('loggedInUser');
+
+        navigate('/login')
+    }
 
     const profileList = [
         {
@@ -59,7 +82,7 @@ export default function Profile() {
             <div className="md:mx-[20%]">
                 <div className="user text-center my-8 space-y-4">
                     <img className='rounded-full w-36 h-36 mx-auto' src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=996&t=st=1702748520~exp=1702749120~hmac=6c599e5dd02ecb88bc1567b729a608d4b031bacb5f23a7442cd62d83c5cb513e" alt="user photo" />
-                    <h2 className='font-semibold text-lg'>User name</h2>
+                    <h2 className='font-semibold text-lg'>{loggedInUser.email}</h2>
                 </div>
 
                 <div className="mx-4 ">
@@ -67,8 +90,12 @@ export default function Profile() {
                         profileList.map((item, index) => (
                             <div className="" key={index}>
                                 {
-                                    (item.link === '/add-book' && localStorage.getItem('publisher') === 'true') ?
-                                        <div className={`flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => navigate(item.link)} >
+                                    (item.link === '/add-book' && localStorage.getItem('publisher') === 'true')
+                                        ?
+                                        <div className={`flex space-x-5 border-b-2 p-4 px-8 align-middle cursor-pointer "}`} onClick={() => {
+                                            navigate(item.link);
+                                            item.displayName === "Logout" && handleLogoutClick();
+                                        }}>
                                             <span className='text-4xl'>{item.icon}</span>
                                             <span className='text-lg'>{item.displayName}</span>
                                         </div>

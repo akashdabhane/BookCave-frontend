@@ -23,7 +23,12 @@ export default function PlaceOrder() {
 
     useEffect(() => {
         try {
-            axios.get(`${baseUrl}/users/user/${localStorage.getItem('userIdGlobal')}`)
+            axios.get(`${baseUrl}/users/user/${localStorage.getItem('userIdGlobal')}`, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
                 .then(data => {
                     console.log(data);
                     setUserData(data.data.data);

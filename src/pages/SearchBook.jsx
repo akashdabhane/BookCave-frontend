@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { FaMagnifyingGlass } from "react-icons/fa6";
 import Navbar from '../components/Navbar';
 import BooksList from '../components/BooksList';
 import axios from 'axios';
@@ -46,10 +45,15 @@ export default function SearchBook() {
 
     useEffect(() => {
         try {
-            axios.get(`${baseUrl}/books/all-books`)
+            axios.get(`${baseUrl}/books/all-books`, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
                 .then(data => {
                     console.log(data)
-                    setBooks(data.data);
+                    setBooks(data.data.data);
                     setIsLoding(false);
                 })
                 .catch(error => {
@@ -65,13 +69,9 @@ export default function SearchBook() {
         <div className=' bg-white '>
             <Navbar />
             <div className="">
-                <main className='space-y-3 my-4 md:mx-28'>
-                    <div className="flex items-center justify-center space-x-3">
-                        <input className='w-80 p-2 px-4 rounded border-[1px] border-gray-600 outline outline-blue-500 ' type="text" placeholder='search for book' />
-                        <FaMagnifyingGlass className='bg-blue-600 text-4xl p-2 cursor-pointer rounded' />
-                    </div>
-                    <h3 className='w-full p-2 bg-gray-400 text-center text-lg font-semibold border-b-2 border-gray-700'>Search for Available book</h3>
-                </main>
+                    <h3 className='md:mx-28 p-2 bg-gray-400 text-center text-lg font-semibold border-b-2 border-gray-700'>Search for Available book</h3>
+                {/* <main className='space-y-3 my-4 md:mx-28'>
+                </main> */}
 
                 <BooksList books={books} isLoding={isLoding} />
             </div>

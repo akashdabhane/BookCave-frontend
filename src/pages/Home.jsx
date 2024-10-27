@@ -8,7 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Footer from '../components/Footer';
 import { baseUrl } from '../utils/baseUrl'
-
+import Cookies from 'js-cookie';
+import CategoryWiseTopBooks from '../components/CategoryWiseTopBooks';
 
 
 export default function Home() {
@@ -25,10 +26,15 @@ export default function Home() {
 
     useEffect(() => {
         try {
-            axios.get(`${baseUrl}/books/all-books`)
+            axios.get(`${baseUrl}/books/all-books`, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                }
+            })
                 .then(data => {
-                    console.log(data)
-                    setBooks(data.data);
+                    console.log(data.data.data)
+                    setBooks(data.data.data);
                     setIsLoding(false);
                 })
                 .catch(error => {
@@ -61,12 +67,15 @@ export default function Home() {
                 <Slider {...settings}>
                     {
                         SlideBarImg.map((item, index) => (
-                            <img className='w-full h-80' src={item} alt="banner" key={index} />
+                            <img className='w-full h-96' src={item} alt="banner" key={index} />
                         ))
                     }
                 </Slider>
 
                 <BooksList books={books} isLoding={isLoding} />
+
+                <CategoryWiseTopBooks books={books.slice(0, 5)} category={"Fiction"} />
+                <CategoryWiseTopBooks books={books.slice(3, 8)} category={"Motivation"} />
             </div>
 
             <Footer />

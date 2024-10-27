@@ -14,7 +14,12 @@ export default function OrderHistory() {
                 .then((orderData) => {
                     console.log("Order History Data: ", orderData.data);
                     const orderPromises = orderData.data.map((item) => {
-                        return axios.get(`${baseUrl}/api/book-info/${item.productId}`);
+                        return axios.get(`${baseUrl}/books/book-info/${item.productId}`, {
+                            withCredentials: true,
+                            headers: {
+                                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                            }
+                        });
                     });
 
                     console.log(orderPromises);

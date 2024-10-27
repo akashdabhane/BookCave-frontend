@@ -1,72 +1,99 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import bgCover from '../images/bgCover.png'
 import { baseUrl } from '../utils/baseUrl';
-
+import { registrationSchema } from '../validationSchema/registrationSchema';
+import { useFormik } from "formik";
 
 
 export default function Register() {
-    const [phone, setPhone] = useState('');
-    const [password, setPassword] = useState('');
-    const [repeatPassword, setRepeatPassword] = useState('');
     const [isPublication, setIsPublication] = useState(false);
     const [publicationName, setPublicationName] = useState('');
     const [error, setError] = useState('');
-
     const navigate = useNavigate();
 
+    // using formik for handling input fields
+    const initialValues = {
+        email: "",
+        password: "",
+        confirmPassword: "",
+    };
 
-    const handleOnClick = (event) => {
-        event.preventDefault();
+    // values, handleBlur, handleChange, handleSubmit, errors, touched
+    const formik = useFormik({
+        initialValues,
+        validationSchema: registrationSchema,
+        validateOnChange: true,
+        validateOnBlur: false,
+        // By disabling validation onChange and onBlur formik will validate on submit.
+        onSubmit: (values, action) => {
+            handleRegistration(values);
 
-        console.log(isPublication); 
-        console.log(publicationName); 
-
-        console.log(phone)
-        if (phone.length === 10 && password.length >= 6 && password.length <= 16 && password === repeatPassword) {
-            try {
-                axios.post(`${baseUrl}/users/register`, {
-                    phone: phone,
-                    password: password,
-                    publisher: isPublication,
-                    publicationName: publicationName,
-                })
-                    .then(data => {
-                        console.log(data);
-                        setPhone('');
-                        setPassword('');
-                        setRepeatPassword("");
-
-                        navigate('/login');
-
-                    })
-                    .catch(error => {
-                        setError(error.response.data.message);
-                    })
-            } catch (error) {
-                console.log(error);
-            }
-        } else if (phone.length !== 10) {
-            setError("enter valid phone number")
-        } else if (password.length <= 6 || password.length >= 16) {
-            setError("password length must be between 6 to 16 characters")
-        } else if (password !== repeatPassword) {
-            setError("Password must matched!")
+            action.resetForm();
         }
+    })
 
+
+    const handleRegistration = async (formData) => {
+        try {
+            const response = await axios.post(`${baseUrl}/users/register`, formData);
+
+            navigate('/login');
+        } catch (error) {
+            console.log(error);
+            setError(error.message);
+        }
     }
 
+
     return (
-        <div className=' py-4' style={{ backgroundImage: `url(${bgCover})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <main className='md:mx-auto text-black bg-white p-6 mx-4 md:w-[36%] h-[40rem] rounded-md my-[4rem] align-middle py-16 space-y-8'>
+        <div className='w-full h-[100vh] py-2' style={{ backgroundImage: `url(${bgCover})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <main className='md:mx-auto text-black bg-white p-6 mx-4 md:w-[36%] h-[38rem] rounded-md my-[2rem] align-middle py-14 space-y-6'>
                 <h2 className="heading mx-4 md:mx-24 text-2xl font-bold">Register</h2>
                 <span className='mx-4 md:mx-24 text-sm text-red-600'>{error}</span>
-                <form className='text-center mx-4 md:mx-24 space-y-4' >
-                    <input type="text" inputMode='numeric' value={phone} onChange={(event) => setPhone(event.target.value)} placeholder='enter phone number' className='border-[1px] w-full p-4 outline-none' />
-                    <input type={'password'} autoComplete='false' value={password} onChange={(event) => setPassword(event.target.value)} placeholder='password' className='outline-none p-4 w-full border-[1px] ' />
+                <form onSubmit={formik.handleSubmit} className='text-start mx-4 md:mx-24 space-y-4'>
+                    <div className="">
+                        <input type="email" name='email' placeholder='Enter email'
+                            className='border-[1px] w-full p-4 outline-none'
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
+                        {
+                            (formik.touched.email && formik.errors.email) && (
+                                <p className="text-red-600 text-xs">{formik.errors.email}</p>
+                            )
+                        }
+                    </div>
 
-                    <input type={'password'} autoComplete='false' value={repeatPassword} onChange={(event) => setRepeatPassword(event.target.value)} placeholder='repeat password' className='outline-none p-4 w-full border-[1px]' />
+                    <div className="">
+                        <input type='password' name='password' placeholder='Password' autoComplete='false'
+                            className='outline-none p-4 w-full border-[1px] '
+                            value={formik.values.password}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
+                        {
+                            (formik.touched.password && formik.errors.password) && (
+                                <p className="text-red-600 text-xs">{formik.errors.password}</p>
+                            )
+                        }
+                    </div>
+
+                    <div className="">
+                        <input type='password' name='confirmPassword' placeholder='Repeat password' autoComplete='false'
+                            className='outline-none p-4 w-full border-[1px]'
+                            value={formik.values.confirmPassword}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                        />
+                        {
+                            (formik.touched.confirmPassword && formik.errors.confirmPassword) && (
+                                <p className="text-red-600 text-xs">{formik.errors.confirmPassword}</p>
+                            )
+                        }
+                    </div>
 
                     <div className="flex justify-between text-sm">
                         <div className="">
@@ -77,13 +104,13 @@ export default function Register() {
 
                     <input type="text" autoComplete='false' value={publicationName} onChange={(event) => setPublicationName(event.target.value)} placeholder='enter publication name' className={`${isPublication ? " border-[1px] w-full p-4 outline-none" : "hidden"}`} />
 
-                    <button onClick={handleOnClick} className={'bg-black w-full cursor-pointer text-white p-4 font-semibold my-12'} >
+                    <button type='submit' className={'bg-black w-full cursor-pointer text-white p-4 font-semibold my-12'} >
                         Register
                     </button>
                 </form>
 
                 <div className="mx-6 md:mx-24 text-sm">
-                    <span> Already have account </span>
+                    <span> Already have account ?</span>
                     <Link to='/login' className='text-blue-400'>Login</Link>
                 </div>
             </main>

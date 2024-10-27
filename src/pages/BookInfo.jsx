@@ -18,13 +18,15 @@ export default function BookInfo() {
 
     useEffect(() => {
         try {
-            axios.get(`${baseUrl}/books/book-info/${id}`)
+            axios.get(`${baseUrl}/books/book-info/${id}`, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
                 .then(data => {
-                    console.log(data);
-                    console.log(data.data.image.url)
-                    setBook(data.data)
+                    setBook(data.data.data)
                     setIsLoging(false);
-                    console.log(data.data.description)
                 })
                 .catch(error => {
                     console.log(error);
@@ -50,7 +52,7 @@ export default function BookInfo() {
                                         isLoding ?
                                             <Skeleton width={195} height={240} containerClassName="flex-1" />
                                             :
-                                            <img className='w-48 h-60' src={book.image.url} alt="book image" />
+                                            <img className='w-48 h-60' src={book.imageUrl} alt="book image" />
                                     }
                                     <div className="space-y-2">
                                         <h4 className='text-xl'>{book.title || <Skeleton />}</h4>
@@ -112,7 +114,7 @@ export default function BookInfo() {
 function Review() {
     const review = [
         {
-            id: 1, 
+            id: 1,
             user: "userId",
             rating: 4.4,
             review: "this is a review"
