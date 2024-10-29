@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import axios from 'axios';
 import { baseUrl } from '../utils/baseUrl';
-
+import contactUs from '../images/contactUs.png';
 
 export default function ContactUs() {
     const [emailData, setEmailData] = useState({
@@ -50,8 +50,8 @@ export default function ContactUs() {
         <div className=' text-black bg-white h-[100vh]'>
             <Navbar />
 
-            <div className="md:mx-[20%] ">
-                <h2 className='font-bold text-2xl m-7 text-center'>Let's start conversition</h2>
+            <div className="md:mx-[10%] bg-[#edebe7] rounded-lg py-10 my-10">
+                <h2 className='font-bold text-2xl mb-5 text-center'>Let's start conversition</h2>
 
                 <div className="flex justify-around">
                     <form className="">
@@ -87,7 +87,7 @@ export default function ContactUs() {
                         </main>
                     </form>
 
-                    <img className='-ml-96 opacity-40 md:opacity-100 w-[30rem] align-middle' src="https://westward360.com/wp-content/uploads/2021/01/Hero-Contact-Image.svg" alt="contact us" />
+                    <img className='-ml-96 opacity-40 md:opacity-100 w-[30rem] align-middle' src={contactUs} alt="contact us" />
                 </div>
             </div>
 

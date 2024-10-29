@@ -3,8 +3,9 @@ import { FaTruck, FaBell, FaStar } from "react-icons/fa";
 
 export default function PlaceOrderLogin({ display, setDisplay, userData }) {
     useEffect(() => {
-        console.log(userData); 
+        console.log(userData);
     }, [])
+    
     return (
         <div onClick={() => setDisplay(0)}>
             <div className={`flex p-4 text-lg space-x-4 cursor-pointer  ${display === 0 ? "bg-blue-600 text-white" : "text-gray-400 shadow-md"} `}>
@@ -15,15 +16,30 @@ export default function PlaceOrderLogin({ display, setDisplay, userData }) {
             <div className={`${display === 0 ? "shadow-md py-4" : "hidden"}`}>
                 <div className="p-8 md:px-16 flex flex-col md:flex-row justify-between ">
                     <div className="space-y-2 md:w-[40%]">
-                        <div className="space-x-4 text-lg ">
-                            <span className='text-gray-500 '>Name</span>
-                            <span className='font-semibold '>{userData?.name}</span>
-                        </div>
-                        <div className="space-x-4 text-lg ">
-                            <span className='text-gray-500'>Phone</span>
-                            <span className='font-semibold'>{userData.phone}</span>
-                        </div>
-
+                        {
+                            (userData?.firstname || userData?.lastname) && (
+                                <div className="space-x-4 text-lg ">
+                                    <span className='text-gray-500 '>Name</span>
+                                    <span className='font-semibold '>{userData?.firstname + " " + userData?.lastname}</span>
+                                </div>
+                            )
+                        }
+                        {
+                            userData?.phone && (
+                                <div className="space-x-4 text-lg ">
+                                    <span className='text-gray-500'>Phone</span>
+                                    <span className='font-semibold'>{userData?.phone}</span>
+                                </div>
+                            )
+                        }
+                        {
+                            userData?.email && (
+                                <div className="space-x-4 text-lg ">
+                                    <span className='text-gray-500'>Email</span>
+                                    <span className='font-semibold'>{userData?.email}</span>
+                                </div>
+                            )
+                        }
                         <h4 className='text-blue-600 font-semibold '>Logout and Sign in to another account</h4>
 
                         <button className='bg-orange-600 text-white font-semibold w-full text-lg p-3' onClick={() => setDisplay(1)}>Continue Checkout</button>

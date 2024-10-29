@@ -11,7 +11,7 @@ import { CiSquarePlus } from "react-icons/ci";
 import Footer from '../components/Footer';
 import axios from 'axios';
 import { baseUrl } from '../utils/baseUrl';
-
+import defaultProfileImage from '../images/defaultProfileImage.png';
 
 export default function Profile() {
     const [loggedInUser, setLoggedInUser] = useState({});
@@ -81,7 +81,7 @@ export default function Profile() {
 
             <div className="md:mx-[20%]">
                 <div className="user text-center my-8 space-y-4">
-                    <img className='rounded-full w-36 h-36 mx-auto' src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=996&t=st=1702748520~exp=1702749120~hmac=6c599e5dd02ecb88bc1567b729a608d4b031bacb5f23a7442cd62d83c5cb513e" alt="user photo" />
+                    <img className='rounded-full bg-slate-300 w-36 h-36 mx-auto' src={defaultProfileImage} alt="user photo" />
                     <h2 className='font-semibold text-lg'>{loggedInUser.email}</h2>
                 </div>
 
