@@ -26,6 +26,7 @@ export default function Navbar() {
         console.log('search')
         if (inputRef.current.value !== "") {
             navigate('/search?query=' + inputRef.current.value);
+            window.location.reload();
             return;
         }
 

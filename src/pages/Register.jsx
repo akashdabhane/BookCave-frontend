@@ -95,14 +95,14 @@ export default function Register() {
                         }
                     </div>
 
-                    <div className="flex justify-between text-sm">
+                    {/* <div className="flex justify-between text-sm">
                         <div className="">
                             <input type="checkbox" name="publication" id="publication" onChange={(event) => event.target.checked === true ? setIsPublication(true) : setIsPublication(false)} />
                             <label htmlFor="publication">Publication</label>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <input type="text" autoComplete='false' value={publicationName} onChange={(event) => setPublicationName(event.target.value)} placeholder='enter publication name' className={`${isPublication ? " border-[1px] w-full p-4 outline-none" : "hidden"}`} />
+                    {/* <input type="text" autoComplete='false' value={publicationName} onChange={(event) => setPublicationName(event.target.value)} placeholder='enter publication name' className={`${isPublication ? " border-[1px] w-full p-4 outline-none" : "hidden"}`} /> */}
 
                     <button type='submit' className={'bg-black w-full cursor-pointer text-white p-4 font-semibold my-12'} >
                         Register

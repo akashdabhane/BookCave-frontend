@@ -13,8 +13,6 @@ import OrderPlacedPopup from '../components/OrderPlacedPopup';
 
 export default function PlaceOrder() {
     const [display, setDisplay] = useState(0);
-    const [userData, setUserData] = useState({})
-    const [bookInfo, setBookInfo] = useState({})
     const [confirmOrder, setConfirmOrder] = useState(false);
     const [orderDetails, setOrderDetails] = useState({})
     const [quantity, setQuantity] = useState(1);
@@ -36,28 +34,6 @@ export default function PlaceOrder() {
             .catch((error) => {
                 console.log(error);
             })
-
-
-        try {
-            axios.get(`${baseUrl}/books/book-info/${id}`, {
-                withCredentials: true,
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-                }
-            })
-                .then((data) => {
-                    console.log(data.data);
-                    // if (!data.data.success) throw new Error("No such book exists!");
-
-                    setBookInfo(data.data)
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        } catch (error) {
-            console.log(error);
-        }
-
     }, [display, id])
 
 
@@ -67,9 +43,9 @@ export default function PlaceOrder() {
             productId: id,
             status: "pending",
             quantity: quantity,
-            totalPrice: (bookInfo.price * quantity)
+            // totalPrice: (bookInfo.price * quantity)
         })
-    }, [quantity, id, bookInfo.price])
+    }, [quantity, id])
 
 
 
@@ -78,7 +54,7 @@ export default function PlaceOrder() {
         // console.log(localStorage.getItem('userIdGlobal'), id, quantity, bookInfo.price * quantity)
 
         try {
-            await axios.post(`${baseUrl}/api/orders/create-order`, orderDetails)
+            await axios.post(`${baseUrl}/orders/create-order`, orderDetails)
                 .then(data => {
                     console.log(data);
                 })
@@ -104,7 +80,7 @@ export default function PlaceOrder() {
 
                 <PlaceOrderDeliveryAddress display={display} setDisplay={setDisplay} userData={loggedInUser} />
 
-                <PlaceOrderOrderSummary display={display} setDisplay={setDisplay} bookInfo={bookInfo} setQuantity={setQuantity} quantity={quantity} />
+                <PlaceOrderOrderSummary display={display} setDisplay={setDisplay} bookId={id} setQuantity={setQuantity} quantity={quantity} />
 
                 <PlaceOrderPaymentOptions display={display} setDisplay={setDisplay} setConfirmOrder={setConfirmOrder} handleConfirmOrder={handleConfirmOrder} />
             </div>

@@ -1,8 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
+import axios from 'axios';
+import { baseUrl } from "../utils/baseUrl";
 
+export default function PlaceOrderOrderSummary({ display, setDisplay, bookId, setQuantity, quantity }) {
+    const [bookInfo, setBookInfo] = useState({})
 
-export default function PlaceOrderOrderSummary({ display, setDisplay, bookInfo, setQuantity, quantity }) {
+    useEffect(() => {
+        try {
+            axios.get(`${baseUrl}/books/book-info/${bookId}`, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                }
+            })
+                .then((data) => {
+                    console.log(data.data);
+                    // if (!data.data.success) throw new Error("No such book exists!");
+
+                    setBookInfo(data.data)
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        } catch (error) {
+            console.log(error);
+        }
+    }, [])
 
     return (
         <div onClick={() => setDisplay(2)}>

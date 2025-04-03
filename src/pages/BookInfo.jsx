@@ -61,7 +61,7 @@ export default function BookInfo() {
                                         <div className="flex space-x-4">
                                             <h3 className="price text-xl font-semibold">{book.price || <Skeleton containerClassName="flex-1" count={0.5} />} </h3>
                                             <div className="relative ">
-                                                <span className="mrp text-xl font-semibold text-gray-600">{'20000' || <Skeleton />} </span>
+                                                <span className="mrp text-xl font-semibold text-gray-600">{(book?.mrp || "2000") || <Skeleton />} </span>
                                                 <div className="relative bottom-3 h-[0.1rem] bg-gray-500"></div>
                                             </div>
                                         </div>

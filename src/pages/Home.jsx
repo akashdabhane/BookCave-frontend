@@ -13,6 +13,7 @@ import CategoryWiseTopBooks from '../components/CategoryWiseTopBooks';
 export default function Home() {
     // const navigate = useNavigate();
     const [books, setBooks] = useState([]);
+    const [recentlyViewed, setRecentlyViewed] = useState([]);
     const [isLoding, setIsLoding] = useState(true);
 
     const SlideBarImg = [
@@ -20,7 +21,7 @@ export default function Home() {
         "https://allauthor.com/images/mar/img/klshandwick.jpg?vv=1522934823",
         "https://libro-terra.com/wp-content/uploads/2020/01/header_slider_1.png",
         "https://blog.bookbaby.com/wp-content/uploads/2015/11/What-Makes-A-Book-Banner.jpg",
-        "https://booksservices.co.uk/wp-content/uploads/2022/06/The-Book-Club-Slider.jpeg",
+        // "https://booksservices.co.uk/wp-content/uploads/2022/06/The-Book-Club-Slider.jpeg",
     ]
 
 
@@ -44,6 +45,27 @@ export default function Home() {
             console.log(error);
         }
     }, [])
+
+
+    useEffect(() => {
+        try {
+            axios.post(`${baseUrl}/books/recent-viewed`, { "idArray": JSON.parse(localStorage.getItem("recentlyViewedBooks")) }, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                }
+            })
+                .then(data => {
+                    console.log(data.data.data)
+                    setRecentlyViewed(data.data.data);
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
 
 
     const settings = {
@@ -72,8 +94,16 @@ export default function Home() {
                     }
                 </Slider>
 
+                <div className="bg-slate-100 md:py-6">
+                    <h2 className='text-2xl font-semibold text-black md:mx-28 md:-mb-8 '>
+                        Recently Viewed
+                    </h2>
+                    <BooksList books={recentlyViewed} isLoding={isLoding} />
+                </div>
+
                 <BooksList books={books} isLoding={isLoding} />
 
+                <CategoryWiseTopBooks books={books.slice(1, 7)} category={"Best Sellers"} />
                 <CategoryWiseTopBooks books={books.slice(0, 6)} category={"Fiction"} />
                 <CategoryWiseTopBooks books={books.slice(2, 8)} category={"Self-growth"} />
             </div>
